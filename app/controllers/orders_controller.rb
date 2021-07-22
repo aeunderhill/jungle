@@ -2,6 +2,9 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @line_items = @order.line_items
+
+    #@line items is an array that needs to be looped over
   end
 
   def create
@@ -29,7 +32,7 @@ class OrdersController < ApplicationController
   def perform_stripe_charge
     Stripe::Charge.create(
       source:      params[:stripeToken],
-      amount:      cart_subtotal_cents.to_i
+      amount:      (cart_subtotal_cents * 100).to_int
       description: "Khurram Virani's Jungle Order",
       currency:    'cad'
     )
@@ -38,7 +41,7 @@ class OrdersController < ApplicationController
   def create_order(stripe_charge)
     order = Order.new(
       email: params[:stripeEmail],
-      total_cents: cart_subtotal_cents,
+      total_cents: cart_subtotal_cents * 100,
       stripe_charge_id: stripe_charge.id, # returned by stripe
     )
 
@@ -55,5 +58,11 @@ class OrdersController < ApplicationController
     order.save!
     order
   end
+
+  def list_order_items order
+
+    order.map {|item| { name item.name, quantity: item.quantity, description: item. description }}
+  end
+  
 
 end
