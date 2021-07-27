@@ -3,7 +3,7 @@
 <br>
 
 <div class="new_cat_for_admin">
-    <%= link_to '+ New Category', [:new, :admin, :category], class: 'btn btn-info' %>
+    <%= link_to '+ New Category', new_admin_category_path, class: 'btn btn-info' %>
 </div>
 
 <table class="table table-bordered">
@@ -16,8 +16,8 @@
   </thread>
 
   <tbody>
-  <% @product_per_category_count.each do |category, count| %>
-    <%= render "category_count", category: category, count: count %>
+  <% @categories.each do |category| %>
+    <%= render "category_count", category: category%>
   <% end %>
   </tbody>
 </table>

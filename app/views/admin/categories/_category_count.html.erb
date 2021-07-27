@@ -1,4 +1,4 @@
 <tr>
-  <td><%= Category %></td>
-  <td><a href="/categories/ <%= @category_name_to_id[category] %>"><%= count %></a></td>
+  <td><%= category.name %></td>
+  <td><a href="/categories/ <%= category.id %>"><%= category.products.count %></a></td>
 <tr>
