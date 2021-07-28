@@ -1,6 +1,18 @@
 # Jungle
 
 - A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example as a student assigment for Lighthouse Labs
+- Test Drive Development practices are followed using the Rspec libray
+- The Stripe API is used for payment methods
+
+## Project Features
+
+- Admin users can create new product categories
+- Admin users can also add new products to new and/or existing categories
+- Visitors can register a new account or login with a pre-existing account
+- Users sign up with a name, email, password and password confirmation
+- Sign in with email and password
+- Able to easily add and delete items for your own personal cart
+- Users can log out from any page
 
 ## Additional Steps for Apple M1 Machines
 
@@ -31,3 +43,7 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 * Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
 * PostgreSQL 9.x
 * Stripe
+* Ruby 2.6.6
+* Sass-rails
+* Rspec-rails
+
