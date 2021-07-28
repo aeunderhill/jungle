@@ -45,8 +45,26 @@ RSpec.describe User, type: :model do
         expect(@user).to_not be_valid
       end
 
+      context "verifying email inputs" do
+        it "is invalid if email is already taken" do
+          @user = User.create(name: 'test', password: 'test', password_confirmation: 'test', email: 'test')
+          @user2 = User.create(name: 'test2', password: 'test', password_confirmation: 'test', email: 'test')
+  
+          expect(@user2.errors.full_messages.length == 1)
+          expect(@user2.errors.full_messages[0] == "Email has already been taken")
+          expect(@user2).to_not be_valid
+        end
+      end
+
+      it "is invalid if password and password confirmation do not match" do
+        @user = User.create(name: 'test', password: 'test', password_confirmation: 'tEsT', email: 'test')
+  
+        expect(@user.errors.full_messages.length == 1)
+        expect(@user.errors.full_messages[0] == "Password Confirmation doesn't match Password")
+        expect(@user).to_not be_valid
+      end
+
     end
-   
   end
 end
 
