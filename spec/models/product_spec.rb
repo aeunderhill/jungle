@@ -9,7 +9,7 @@ RSpec.describe Product, type: :model do
 
       @product = Product.new
       @product.name = "test-prod"
-      @product.price = 10
+      @product.price_cents = 10
       @product.quantity = 100
       @product.category_id = @category
 
@@ -25,7 +25,7 @@ RSpec.describe Product, type: :model do
 
       @product = Product.new
       @product.name = nil
-      @product.price = 10
+      @product.price_cents = 10
       @product.quantity = 100
       @product.category_id = @category
 
@@ -42,7 +42,7 @@ RSpec.describe Product, type: :model do
       @product = Product.new
       @product.name = 'prod-test'
       @product.quantity = 1
-      @product.price = nil
+      @product.price_cents = nil
       @product.category_id = @category
 
       @category.products = [@product]
@@ -57,7 +57,7 @@ RSpec.describe Product, type: :model do
 
       @product = Product.new
       @product.name = 'prod-test'
-      @product.price = 1
+      @product.price_cents = 1
       @product.quantity = nil
       @product.category_id = @category
 
@@ -73,7 +73,7 @@ RSpec.describe Product, type: :model do
 
       @product = Product.new
       @product.name = 'prod-test'
-      @product.price = 1
+      @product.price_cents = 1
       @product.quantity = 1
       @product.category_id = nil
 
